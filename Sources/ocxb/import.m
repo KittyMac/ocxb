@@ -46,6 +46,7 @@ extern NSMutableDictionary * config;
 		}
 	}
 	
+    // TODO: THIS DOES NOT APPEAR TO GET ANY DATA FROM THE TASKED CHILD
 	NSTask * ocxb_task = [[NSTask alloc] init];
 	NSPipe * newPipe = [NSPipe pipe];
     NSFileHandle * readHandle = [newPipe fileHandleForReading];
@@ -59,7 +60,7 @@ extern NSMutableDictionary * config;
 	[ocxb_task setLaunchPath:[NSString stringWithUTF8String:executable_location]];
 	
 	[ocxb_task launch];
-		
+    		
 	while ([ocxb_task isRunning] && (inData = [readHandle availableData]) && [inData length])
 	{
 		[all_data appendData:inData];

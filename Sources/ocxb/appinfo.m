@@ -16,6 +16,7 @@
 {
 	simpleType * ancestor_simpleType = (simpleType *)[self ancestorOfType:[simpleType class]];
 	
+    
 	if(ancestor_simpleType != NULL)
 	{
 		ancestor_simpleType.appinfo = contents;
@@ -29,11 +30,11 @@
 		
 		if([parts count] == 1)
 		{
-			[ancestor_complexType.header_declarations appendFormat:@"%@\n", contents];
+			[ancestor_complexType.header_declarations appendFormat:@"\t%@\n", contents];
 		}
 		if([parts count] == 2)
 		{
-			[ancestor_complexType.header_declarations appendFormat:@"%@\n", [parts objectAtIndex:1]];
+			[ancestor_complexType.header_declarations appendFormat:@"\t%@\n", [parts objectAtIndex:1]];
 			
 			if([[parts objectAtIndex:0] hasPrefix:@"#"])
 			{
@@ -54,11 +55,11 @@
 		
 		if([parts count] == 1)
 		{
-			[ancestor_element.header_declarations appendFormat:@"%@\n", contents];
+			[ancestor_element.header_declarations appendFormat:@"\t%@\n", contents];
 		}
 		if([parts count] == 2)
 		{
-			[ancestor_element.header_declarations appendFormat:@"%@\n", [parts objectAtIndex:1]];
+			[ancestor_element.header_declarations appendFormat:@"\t%@\n", [parts objectAtIndex:1]];
 			
 			if([[parts objectAtIndex:0] hasPrefix:@"#"])
 			{

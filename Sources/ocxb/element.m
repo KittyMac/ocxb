@@ -226,7 +226,7 @@ extern NSMutableDictionary * config;
 				{
 					[ancestor_element.header_properties appendFormat:@"@property(nonatomic) %@ %@;\n", type, name];
 					[ancestor_element.header_properties appendFormat:@"@property(nonatomic, readonly) BOOL %@Exists;\n", name];
-					[ancestor_element.header_declarations appendFormat:@"BOOL %@Exists;\n", name];
+					[ancestor_element.header_declarations appendFormat:@"\tBOOL %@Exists;\n", name];
 					[ancestor_element.class_properties appendFormat:@"@synthesize %@;\n", name];
 					[ancestor_element.class_properties appendFormat:@"@synthesize %@Exists;\n", name];
 					[ancestor_element.class_properties appendFormat:@"%@;\n\n", natural_type];

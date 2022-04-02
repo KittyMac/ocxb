@@ -24,9 +24,15 @@ extern NSMutableDictionary * config;
 		NSString * base = [self get:@"base"];
 		
 		if([base rangeOfString:@":"].length > 0)
-		{
-			ancestor_element.class_superclass = [NSMutableString stringWithString:[[[self get:@"base"] componentsSeparatedByString:@":"] componentsJoinedByString:@"_"]];
-		}
+        {
+            NSArray * parts = [[self get:@"base"] componentsSeparatedByString:@":"];
+            NSMutableArray * capParts = [NSMutableArray array];
+            for (NSString * part in parts) {
+                NSString * capPart = [NSString stringWithFormat:@"%@%@", [[part capitalizedString] substringToIndex:1], [part substringFromIndex:1]];
+                [capParts addObject: capPart];
+            }
+            ancestor_element.class_superclass = [NSMutableString stringWithString:[capParts componentsJoinedByString:@"_"]];
+        }
 		else
 		{
 			ancestor_element.class_superclass = [NSMutableString stringWithString:[NSString stringWithFormat:@"%@_%@", [config objectForKey:@"prefix"], base]];
